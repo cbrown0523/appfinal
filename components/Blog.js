@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Image, ScrollView, Button, StyleSheet, SafeAreaView, Text, View} from 'react-native';
 
 
-export default function About({navigation}){
+export default function Blog({navigation}){
     return (
         <SafeAreaView>
             <ScrollView>
@@ -11,10 +11,24 @@ export default function About({navigation}){
             <View style ={{ paddingTop:120, flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#f8f8f8"}}>
            <View style={styles.navContainer}>
                <View style={styles.navButton}>
-               <Text>HOME</Text>
+               <Button
+            onPress={
+              () => navigation.navigate('Work')
+            }
+            title="Work"  color="#d3cfcf"
+          />
+               
                 </View>
                <View style={styles.navButton}>
-               <Text style= {styles.contact1}>BLOG </Text>
+                 
+               <Button
+            onPress={
+              () => navigation.navigate('Contacts')
+            }
+            title="Contact"  color="#d3cfcf"
+          />
+                </View>
+               <View style={styles.navButton}>
                </View>
                
                </View>
@@ -140,17 +154,27 @@ export default function About({navigation}){
 
 const styles = StyleSheet.create({
 
-    container : {
-        flex:1,
-        flexDirection : "column",
-        height:"100%",
-    
-      },
-      navContainer: {
+  container : {
+    flex:1,
+    flexDirection : "column",
+    height:"100%",
+
+  },
+  navContainer: {
+    flexDirection: "row",
+    paddingTop: 10,
+    width:100,
+    },
+    navContainerCard: {
         flexDirection: "row",
-        paddingTop: 10,
         width:100,
         },
+    navButton: {
+      paddingTop:15,
+  
+    
+      },
+     
         navContainerCard: {
             flexDirection: "row",
             width:100,

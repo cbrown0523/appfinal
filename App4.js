@@ -1,45 +1,119 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import Nav from './components/Nav';
+//This is an example code for NavigationDrawer//
 
-import About from "./components/About";
-import Home from "./components/Home";
-import Contacts from "./components/Contacts";
-import Blog from "./components/Blog";
-import Experience from "./components/Experience";
-import Work from "./components/Work";
-import Services from "./components/Services";
+//import react in our code.
+import React, { Component } from 'react';
 
+// import all basic components
+import { View, Image, TouchableOpacity } from 'react-native';
 
-const Drawer = createDrawerNavigator();
+//Import React Navigation
+import {createAppContainer} from 'react-navigation';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {createStackNavigator} from 'react-navigation-stack';
 
-export default function App4() {
-  return (
-    <NavigationContainer>
-      <Nav />
-      
-    <Drawer.Navigator initialRouteName= "Home">
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="About" component={About} />
-      <Drawer.Screen name="Blog" component={Blog} />
-      <Drawer.Screen name="Contacts" component={Contacts} />
-      <Drawer.Screen name="Experience" component={Experience} />
-      <Drawer.Screen name="Services" component={Services} />
-      <Drawer.Screen name="Work" component={Work} />
-    </Drawer.Navigator>
-    </NavigationContainer>
-  );
+//Import external files
+import Screen1 from './pages/Screen1';
+import Screen2 from './pages/Screen2';
+import Screen3 from './pages/Screen3';
+
+class NavigationDrawerStructure extends Component {
+  //Structure for the navigatin Drawer
+  toggleDrawer = () => {
+    //Props to open/close the drawer
+    this.props.navigationProps.toggleDrawer();
+  };
+  render() {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
+          {/*Donute Button Image */}
+          <Image
+            source={require('./image/drawer.png')}
+            style={{ width: 25, height: 25, marginLeft: 5 }}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const FirstActivity_StackNavigator = createStackNavigator({
+  //All the screen from the Screen1 will be indexed here
+  First: {
+    screen: Screen1,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Demo Screen 1',
+      headerLeft: ()=>
+        <NavigationDrawerStructure
+          navigationProps={navigation}
+        />,
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
   },
 });
+
+const Screen2_StackNavigator = createStackNavigator({
+  //All the screen from the Screen2 will be indexed here
+  Second: {
+    screen: Screen2,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Demo Screen 2',
+      headerLeft: ()=>
+        <NavigationDrawerStructure
+          navigationProps={navigation}
+        />,
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+const Screen3_StackNavigator = createStackNavigator({
+  //All the screen from the Screen3 will be indexed here
+  Third: {
+    screen: Screen3,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Demo Screen 3',
+      headerLeft: ()=>
+        <NavigationDrawerStructure
+          navigationProps={navigation}
+        />,
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+const DrawerNavigatorExample = createDrawerNavigator({
+  //Drawer Optons and indexing
+  Screen1: {
+    //Title
+    screen: FirstActivity_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Demo Screen 1',
+    },
+  },
+  Screen2: {
+    //Title
+    screen: Screen2_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Demo Screen 2',
+    },
+  },
+  Screen3: {
+    //Title
+    screen: Screen3_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Demo Screen 3',
+    },
+  },
+});
+
+export default createAppContainer(DrawerNavigatorExample);

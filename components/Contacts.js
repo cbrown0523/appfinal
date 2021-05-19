@@ -1,18 +1,30 @@
 import * as React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, Button, ScrollView, StyleSheet, Text, View} from 'react-native';
 import { WebView } from 'react-native-webview';
 function Contacts({navigation}){
     return (
         <ScrollView>
-        <View style={styles.container}>
+                <SafeAreaView>
+                <View style={styles.container}>
             <View style ={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#f8f8f8"}}>
            <View style={styles.navContainer}>
                <View style={styles.navButton}>
-               <Text>Home</Text>
+               <Button 
+            onPress={
+              () => navigation.navigate('About')
+            }
+            title="About" color="#d3cfcf"
+          />
                
-               </View>
+                </View>
                <View style={styles.navButton}>
-               <Text style= {styles.contact1}>Contact</Text>
+                 
+               <Button
+            onPress={
+              () => navigation.navigate('Experience')
+            }
+            title="Experience" color="#d3cfcf"
+          />
                </View>
                
                </View>
@@ -48,7 +60,8 @@ function Contacts({navigation}){
                
 </View>
 </View>
-      
+</SafeAreaView>
+
         </ScrollView>
     )
 }
@@ -56,25 +69,26 @@ export default Contacts
 
 const styles = StyleSheet.create({
 
-    container : {
-        flex:1,
-        flexDirection : "column",
-        height:"100%",
-    
-      },   
-      navContainer: {
+  container : {
+    flex:1,
+    flexDirection : "column",
+    height:"100%",
+
+  },
+  navContainer: {
+    flexDirection: "row",
+    paddingTop: 10,
+    width:100,
+    },
+    navContainerCard: {
         flexDirection: "row",
-        paddingTop: 125,
         width:100,
         },
-        navButton: {
-          alignItems: "center",
-          width:50,
-          color: "#fff",
-          flex:1
-          
-
-          }, 
+    navButton: {
+      paddingTop:15,
+  
+    
+      },
           form :{
               flex:1,
               backgroundColor : "#ffffff",
@@ -112,5 +126,3 @@ const styles = StyleSheet.create({
               paddingTop:80
           }
 })
-
-

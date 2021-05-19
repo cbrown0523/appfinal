@@ -10,10 +10,22 @@ export default function About({navigation}){
             <View style ={{ paddingTop:120, flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#f8f8f8"}}>
            <View style={styles.navContainer}>
                <View style={styles.navButton}>
-               <Text>HOME</Text>
+               <Button
+            onPress={
+              () => navigation.navigate('Home')
+            }
+            title="Home"  color="#d3cfcf"
+          />
+               
                 </View>
                <View style={styles.navButton}>
-               <Text style= {styles.contact1}>ABOUT US</Text>
+                 
+               <Button
+            onPress={
+              () => navigation.navigate('Services')
+            }
+            title="Services"  color="#d3cfcf"
+          />
                </View>
                
                </View>

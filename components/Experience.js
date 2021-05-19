@@ -10,10 +10,22 @@ export default function Experience({navigation}){
             <View style ={{ paddingTop:120, flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#ffffff"}}>
            <View style={styles.navContainer}>
                <View style={styles.navButton}>
-               <Text>HOME</Text>
+               <Button
+            onPress={
+              () => navigation.navigate('Services')
+            }
+            title="Services"  color="#d3cfcf"
+          />
+               
                 </View>
                <View style={styles.navButton}>
-               <Text style= {styles.contact1}>EXPERIENCED</Text>
+                 
+               <Button
+            onPress={
+              () => navigation.navigate('Work')
+            }
+            title="Work"  color="#d3cfcf"
+          />
                </View>
                
                </View>
@@ -88,24 +100,27 @@ export default function Experience({navigation}){
 
 const styles = StyleSheet.create({
 
-    container : {
-        flex:1,
-        flexDirection : "column",
-        height:"100%",
-    
-      },
-      navContainer: {
+  container : {
+    flex:1,
+    flexDirection : "column",
+    height:"100%",
+
+  },
+  navContainer: {
+    flexDirection: "row",
+    paddingTop: 10,
+    width:100,
+    },
+    navContainerCard: {
         flexDirection: "row",
-        paddingTop: 30,
         width:100,
         },
-        navButton: {
-          width:"100%",
-          color: "#fff",
-                  backgroundColor:"#ffffff"
-
-
-          }, 
+    navButton: {
+      paddingTop:15,
+  
+    
+      },
+     
           navContainer2: {
             flexDirection: "row",
             paddingTop: 10,

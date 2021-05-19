@@ -1,18 +1,30 @@
 import * as React from 'react';
-import {Linking, TouchableHighlight, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Button,Linking, TouchableHighlight, Image, ScrollView, StyleSheet, Text, View, SafeAreaView} from 'react-native';
 import { WebView } from 'react-native-webview';
 function Contacts({navigation}){
     return (
+      <SafeAreaView>
         <ScrollView>
         <View style={styles.container}>
             <View style ={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#f8f8f8"}}>
            <View style={styles.navContainer}>
                <View style={styles.navButton}>
-               <Text>Home</Text>
+               <Button 
+            onPress={
+              () => navigation.navigate('About')
+            }
+            title="About" color="#d3cfcf"
+          />
                
-               </View>
+                </View>
                <View style={styles.navButton}>
-               <Text>Services</Text>
+                 
+               <Button
+            onPress={
+              () => navigation.navigate('Experience')
+            }
+            title="Experience" color="#d3cfcf"
+          />
                </View>
                
                </View>
@@ -202,31 +214,34 @@ function Contacts({navigation}){
    </View>
       
         </ScrollView>
+        </SafeAreaView>
     )
 }
 export default Contacts
 
 const styles = StyleSheet.create({
 
-    container : {
-        flex:1,
-        flexDirection : "column",
-        height:"100%",
-        backgroundColor:"#f8f8f8"
-    
-      },   
-      navContainer: {
+  container : {
+    flex:1,
+    flexDirection : "column",
+    height:"100%",
+
+  },
+  navContainer: {
+    flexDirection: "row",
+    paddingTop: 10,
+    width:100,
+    },
+    navContainerCard: {
         flexDirection: "row",
-        paddingTop: 125,
         width:100,
         },
-        navButton: {
-          alignItems: "center",
-          width:55,
-          color: "#fff",
-          
-
-          }, 
+    navButton: {
+      paddingTop:15,
+  
+    
+      },
+      
           navContainer3: {
             width:100,
             textAlign :"center",

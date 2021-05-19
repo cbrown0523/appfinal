@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Linking, Image,ImageBackground, TouchableHighlight, StyleSheet, SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {Button, Linking, Image,ImageBackground, TouchableHighlight, StyleSheet, SafeAreaView, ScrollView, Text, View} from 'react-native';
 
 const image2 = { uri: "https://blog.appsumo.com/wp-content/uploads/2020/09/AS-BLOG-Graphic-Design-Resources-1536x614px.jpg" };
 const image1 = { uri: "https://miro.medium.com/max/12000/1*9g2hSDNT3Cao2vh1HMO35A.jpeg" };
@@ -20,10 +20,22 @@ function Work({navigation}){
              <View style ={{ paddingTop:120, flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#f8f8f8"}}>
            <View style={styles.navContainer}>
                <View style={styles.navButton}>
-               <Text>HOME</Text>
+               <Button
+            onPress={
+              () => navigation.navigate('Experience')
+            }
+            title="Experience"  color="#d3cfcf"
+          />
+               
                 </View>
                <View style={styles.navButton}>
-               <Text style= {styles.contact1}>WORK </Text>
+                 
+               <Button
+            onPress={
+              () => navigation.navigate('Blog')
+            }
+            title="Blog"  color="#d3cfcf"
+          />
                </View>
                
                </View>
@@ -104,25 +116,27 @@ export default Work
 
 const styles = StyleSheet.create({
 
-    container : {
-        flex:1,
-        flexDirection : "column",
-        height:"100%",
-        backgroundColor:"#f8f8f8"
-    
-      },   
-      navContainer: {
+  container : {
+    flex:1,
+    flexDirection : "column",
+    height:"100%",
+
+  },
+  navContainer: {
+    flexDirection: "row",
+    paddingTop: 10,
+    width:100,
+    },
+    navContainerCard: {
         flexDirection: "row",
-        paddingTop: 70,
         width:100,
         },
-        navButton: {
-          alignItems: "center",
-          width:55,
-          color: "#fff",
-          
-
-          },
+    navButton: {
+      paddingTop:15,
+  
+    
+      },
+     
           card1:{
             paddingBottom :80
         },
